@@ -1,0 +1,49 @@
+.all-steps {
+  // position: relative;
+
+  img {
+    position: relative;
+  }
+
+}
+
+.inside-image {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 3em;
+}
+
+.number-to-step {
+  background-color: transparent;
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.number {
+  font-weight: 500;
+  color: white;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid white;
+  text-align: center;
+  line-height: 34px;
+  width: 34px;
+  margin-right: 1em;
+}
+
+.number-name,
+.step,
+.name {
+  background-color: transparent;
+
+  &.step {
+    color: hsl(231, 11%, 63%);
+  }
+
+  &.name {
+    color: white;
+    font-weight: 500;
+  }
+}
