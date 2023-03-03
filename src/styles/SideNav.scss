@@ -8,7 +8,6 @@
 }
 
 .inside-image {
-  background-color: transparent;
   position: absolute;
   top: 0;
   left: 0;
@@ -16,7 +15,6 @@
 }
 
 .number-to-step {
-  background-color: transparent;
   display: flex;
   margin-bottom: 2em;
 }
@@ -25,8 +23,18 @@
   font-weight: 500;
   color: white;
   border-radius: 50%;
-  background-color: transparent;
   border: 1px solid white;
+  text-align: center;
+  line-height: 34px;
+  width: 34px;
+  margin-right: 1em;
+}
+
+.active-number {
+  background-color: hsl(229, 24%, 87%);
+  font-weight: 500;
+  color: blue;
+  border-radius: 50%;
   text-align: center;
   line-height: 34px;
   width: 34px;
@@ -36,7 +44,6 @@
 .number-name,
 .step,
 .name {
-  background-color: transparent;
 
   &.step {
     color: hsl(231, 11%, 63%);
