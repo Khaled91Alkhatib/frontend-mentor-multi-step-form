@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import GeneralContext from './contexts/GeneralContext';
@@ -15,6 +15,27 @@ function App() {
   const [plan, setPlan] = useState(false);
   const [addOns, setAddOns] = useState(false);
   const [summary, setSummary] = useState(false);
+
+
+  useEffect(() => {
+    const newInfo = localStorage.getItem('personal-info');
+    if (newInfo !== null) {
+      setYourInfo(JSON.parse(newInfo));
+    }
+  }, []);
+
+  useEffect(() => {
+    const newPlan = localStorage.getItem('plan');
+    if (newPlan !== null) {
+      setPlan(JSON.parse(newPlan));
+    }
+  }, []);
+
+
+  useEffect(() => {
+    localStorage.setItem('personal-info', JSON.stringify(yourInfo));
+    localStorage.setItem('plan', JSON.stringify(plan));
+  }, [yourInfo, plan]);
 
   return (
     <GeneralContext.Provider value={{ yourInfo, setYourInfo, plan, setPlan, addOns, setAddOns, summary, setSummary }}>
