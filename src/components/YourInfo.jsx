@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import GeneralContext from '../contexts/GeneralContext';
 
 import '../styles/YourInfo.scss';
 
 const YourInfo = () => {
+  const { setYourInfo, setPlan } = useContext(GeneralContext);
+  const navigate = useNavigate();
+
+  const handleNextButton = () => {
+    navigate('/selectplan');
+    setPlan(true);
+    setYourInfo(false);
+  };
+
   return (
     <div className='all-your-info'>
       <div className='personal'>Personal info</div>
@@ -20,7 +31,7 @@ const YourInfo = () => {
         <input className='info-input' type='number' placeholder='e.g. +1 123 456 7890' />
       </div>
 
-      <button className='next-step'>Next Step</button>
+      <button onClick={handleNextButton} className='next-step'>Next Step</button>
 
     </div>
   );
