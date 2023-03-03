@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import GeneralContext from '../contexts/GeneralContext';
 
 import '../styles/SideNav.scss';
 import desktopSidebar from '../assests/images/bg-sidebar-desktop.svg';
 
 const SideNav = () => {
+  const { yourInfo, plan, addOns, summary } = useContext(GeneralContext);
+
   return (
     <div className='all-steps'>
       <img src={desktopSidebar} alt='sidebar' />
@@ -11,7 +14,7 @@ const SideNav = () => {
       <div className='inside-image'>
 
         <div className='number-to-step'>
-          <div className='number'>1</div>
+          <div className={yourInfo ? "active-number" : "number"} >1</div>
           <div className='number-name'>
             <div className='step'>STEP 1</div>
             <div className='name'>YOUR INFO</div>
@@ -19,15 +22,15 @@ const SideNav = () => {
         </div>
 
         <div className='number-to-step'>
-          <div className='number'>2</div>
+          <div className={plan ? "active-number" : "number"}>2</div>
           <div className='number-name'>
             <div className='step'>STEP 2</div>
-            <div className='name'>Select PLAN</div>
+            <div className='name'>SELECT PLAN</div>
           </div>
         </div>
 
         <div className='number-to-step'>
-          <div className='number'>3</div>
+          <div className={addOns ? "active-number" : "number"}>3</div>
           <div className='number-name'>
             <div className='step'>STEP 3</div>
             <div className='name'>ADD-ONS</div>
@@ -35,7 +38,7 @@ const SideNav = () => {
         </div>
 
         <div className='number-to-step'>
-          <div className='number'>4</div>
+          <div className={summary ? "active-number" : "number"}>4</div>
           <div className='number-name'>
             <div className='step'>STEP 4</div>
             <div className='name'>SUMMARY</div>
