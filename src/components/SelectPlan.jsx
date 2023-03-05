@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Switch } from '@mui/material';
 import GeneralContext from '../contexts/GeneralContext';
 
 import arcadeImage from '../assests/images/icon-arcade.svg';
@@ -8,6 +7,7 @@ import advancedImage from '../assests/images/icon-advanced.svg';
 import proImage from '../assests/images/icon-pro.svg';
 
 import '../styles/SelectPlan.scss';
+import Toggle from 'react-styled-toggle';
 
 const plans = [
   {
@@ -45,7 +45,7 @@ const SelectPlan = () => {
 
 
   return (
-    <div className='all-your-info'>
+    <div className='every-main-page'>
 
       <div>
 
@@ -55,8 +55,8 @@ const SelectPlan = () => {
         </div>
 
         <div className='plans'>
-          {plans.map((plan) => (
-            <div className='individual-plan'>
+          {plans.map((plan, index) => (
+            <div key={index} className='individual-plan'>
               <div>
                 <img src={plan.image} alt='plan' />
               </div>
@@ -68,9 +68,16 @@ const SelectPlan = () => {
           ))}
         </div>
         <div className='switch-toggle'>
-          <div>Monthly</div>
-          <Switch checked={true} />
-          <div>Yearly</div>
+          <div style={{ marginRight: '10px' }}>Monthly</div>
+          <Toggle
+            backgroundColorChecked='darkblue'
+            backgroundColorUnchecked='darkblue'
+            sliderHeight={15}
+            sliderWidth={15}
+            height={25}
+            width={50}
+          />
+          <div style={{ marginLeft: '10px' }}>Yearly</div>
         </div>
 
       </div>
