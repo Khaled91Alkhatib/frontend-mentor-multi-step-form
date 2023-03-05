@@ -1,6 +1,7 @@
 .plans {
   display: flex;
   flex-direction: row;
+  // width: 100%;
   // justify-content: space-between;
 }
 
@@ -13,8 +14,19 @@
   border: 1px solid rgb(196, 196, 196);
   border-radius: 6px;
   padding: 1em;
+  // margin-right: 1em;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+
+}
+
+.individual-plan:not(:last-child) {
   margin-right: 1em;
 }
+
 
 .plan-name {
   font-size: 18px;
@@ -28,10 +40,13 @@
 }
 
 .switch-toggle {
+  padding: 10px;
   margin-top: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 5px;
 }
 
 .back-next-buttons {
