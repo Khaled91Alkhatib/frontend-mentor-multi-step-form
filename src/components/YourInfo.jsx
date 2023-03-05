@@ -15,7 +15,7 @@ const YourInfo = () => {
   };
 
   return (
-    <div className='all-your-info'>
+    <div className='every-main-page'>
       <div>
         <div className='personal'>Personal info</div>
         <div className='request'>Please provide your name, email address and phone number.</div>
