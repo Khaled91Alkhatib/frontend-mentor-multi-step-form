@@ -16,6 +16,9 @@ function App() {
   const [addOns, setAddOns] = useState(false);
   const [summary, setSummary] = useState(false);
 
+  const [monthly, setMonthly] = useState(true);
+  const [yearly, setYearly] = useState(false);
+
 
   useEffect(() => {
     const newInfo = localStorage.getItem('personal-info');
@@ -38,7 +41,7 @@ function App() {
   }, [yourInfo, plan]);
 
   return (
-    <GeneralContext.Provider value={{ yourInfo, setYourInfo, plan, setPlan, addOns, setAddOns, summary, setSummary }}>
+    <GeneralContext.Provider value={{ yourInfo, setYourInfo, plan, setPlan, addOns, setAddOns, summary, setSummary, yearly, setYearly, monthly, setMonthly }}>
       <div className='overall-app'>
         <SideNav />
         <Routes>
