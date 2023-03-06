@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GeneralContext from '../contexts/GeneralContext';
 
@@ -11,16 +11,19 @@ import Toggle from 'react-styled-toggle';
 
 const plans = [
   {
+    id: 1,
     image: arcadeImage,
     name: 'Arcade',
     price: 9
   },
   {
+    id: 2,
     image: advancedImage,
     name: 'Advanced',
     price: 12
   },
   {
+    id: 3,
     image: proImage,
     name: 'Pro',
     price: 15
@@ -28,7 +31,9 @@ const plans = [
 ];
 
 const SelectPlan = () => {
-  const { setYourInfo, setPlan, setAddOns } = useContext(GeneralContext);
+  const { setYourInfo, setPlan, setAddOns, setMonthly, setYearly, monthly, yearly } = useContext(GeneralContext);
+
+  const [selectedItemId, setSelectedItemId] = useState(null);
   const navigate = useNavigate();
 
   const handleNextButton = () => {
@@ -43,6 +48,19 @@ const SelectPlan = () => {
     setPlan(false);
   };
 
+  const handleItemClick = (itemId) => {
+    setSelectedItemId(itemId);
+  };
+
+  const handlePlanType = () => {
+    if (monthly === true) {
+      setMonthly(false);
+      setYearly(true);
+    } else if (monthly === false) {
+      setMonthly(true);
+      setYearly(false);
+    }
+  };
 
   return (
     <div className='every-main-page'>
@@ -55,20 +73,26 @@ const SelectPlan = () => {
         </div>
 
         <div className='plans'>
-          {plans.map((plan, index) => (
-            <div key={index} className='individual-plan'>
+          {plans.map((plan) => (
+            <div key={plan.id} className={plan.id === selectedItemId ? 'individual-plan active-individual-plan' : 'individual-plan inactive-individual-plan'} onClick={() => handleItemClick(plan.id)}>
               <div>
                 <img src={plan.image} alt='plan' />
               </div>
               <div>
                 <div className='plan-name'>{plan.name}</div>
-                <div className='plan-price'>{plan.price}</div>
+                <div className='plan-price'>
+                  ${monthly ? plan.price : plan.price * 10}
+                  {monthly ? '/mo' : '/yr'}
+                </div>
+                <div className='free-months'>
+                  {yearly ? '2 months free' : ""}
+                </div>
               </div>
             </div>
           ))}
         </div>
         <div className='switch-toggle'>
-          <div style={{ marginRight: '10px' }}>Monthly</div>
+          <div className={monthly === true ? "plan-type active-plan monthly" : "plan-type inactive-plan monthly"}>Monthly</div>
           <Toggle
             backgroundColorChecked='darkblue'
             backgroundColorUnchecked='darkblue'
@@ -76,8 +100,9 @@ const SelectPlan = () => {
             sliderWidth={15}
             height={25}
             width={50}
+            onChange={handlePlanType}
           />
-          <div style={{ marginLeft: '10px' }}>Yearly</div>
+          <div className={yearly === true ? "plan-type active-plan yearly" : "plan-type inactive-plan yearly"}>Yearly</div>
         </div>
 
       </div>
