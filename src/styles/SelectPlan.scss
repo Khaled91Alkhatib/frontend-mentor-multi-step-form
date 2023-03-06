@@ -1,26 +1,31 @@
 .plans {
   display: flex;
   flex-direction: row;
-  // width: 100%;
-  // justify-content: space-between;
 }
 
 .individual-plan {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 170px;
-  width: 150px;
-  border: 1px solid rgb(196, 196, 196);
+  height: 200px;
+  width: 170px;
   border-radius: 6px;
   padding: 1em;
-  // margin-right: 1em;
 
   &:hover {
     cursor: pointer;
     transform: scale(1.02);
   }
 
+}
+
+.active-individual-plan {
+  border: 1px solid blue;
+  background-color: hsl(253, 27%, 94%);
+}
+
+.inactive-individual-plan {
+  border: 1px solid rgb(196, 196, 196)
 }
 
 .individual-plan:not(:last-child) {
@@ -37,6 +42,34 @@
 
 .plan-price {
   color: rgb(167, 167, 167);
+}
+
+.free-months {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: hsl(213, 100%, 27%);
+
+}
+
+.plan-type {
+  font-weight: bold;
+}
+
+.inactive-plan {
+  color: rgb(167, 167, 167);
+}
+
+.active-plan {
+  color: hsl(213, 100%, 27%);
+}
+
+.monthly {
+  margin-right: 10px;
+}
+
+.yearly {
+  margin-left: 10px;
 }
 
 .switch-toggle {
