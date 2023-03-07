@@ -79,8 +79,8 @@ const SelectPlan = () => {
                 <img src={plan.image} alt='plan' />
               </div>
               <div>
-                <div className='plan-name'>{plan.name}</div>
-                <div className='plan-price'>
+                <div className='segment-name'>{plan.name}</div>
+                <div className='segment-price'>
                   ${monthly ? plan.price : plan.price * 10}
                   {monthly ? '/mo' : '/yr'}
                 </div>
