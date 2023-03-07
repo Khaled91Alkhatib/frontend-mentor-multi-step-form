@@ -3,10 +3,14 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 6px;
+  padding: 1em;
+  min-width: 70vh
 }
 
 .main-addons:not(:last-child) {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .addon-price {
