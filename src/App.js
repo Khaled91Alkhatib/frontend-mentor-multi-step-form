@@ -15,9 +15,14 @@ function App() {
   const [plan, setPlan] = useState(false);
   const [addOns, setAddOns] = useState(false);
   const [summary, setSummary] = useState(false);
-
   const [monthly, setMonthly] = useState(true);
   const [yearly, setYearly] = useState(false);
+
+  const [userInputs, setUserInputs] = useState({
+    name: "",
+    email: "",
+    phone: ""
+  });
 
 
   useEffect(() => {
@@ -34,14 +39,21 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    const savedInputs = JSON.parse(localStorage.getItem("userInputs"));
+    if (savedInputs) {
+      setUserInputs(savedInputs);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('personal-info', JSON.stringify(yourInfo));
     localStorage.setItem('plan', JSON.stringify(plan));
-  }, [yourInfo, plan]);
+    localStorage.setItem('userInputs', JSON.stringify(userInputs));
+  }, [yourInfo, plan, userInputs]);
 
   return (
-    <GeneralContext.Provider value={{ yourInfo, setYourInfo, plan, setPlan, addOns, setAddOns, summary, setSummary, yearly, setYearly, monthly, setMonthly }}>
+    <GeneralContext.Provider value={{ yourInfo, setYourInfo, plan, setPlan, addOns, setAddOns, summary, setSummary, yearly, setYearly, monthly, setMonthly, userInputs, setUserInputs }}>
       <div className='overall-app'>
         <SideNav />
         <Routes>
