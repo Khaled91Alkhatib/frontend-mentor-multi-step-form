@@ -5,13 +5,18 @@ import GeneralContext from '../contexts/GeneralContext';
 import '../styles/YourInfo.scss';
 
 const YourInfo = () => {
-  const { setYourInfo, setPlan } = useContext(GeneralContext);
+  const { setYourInfo, setPlan, userInputs, setUserInputs } = useContext(GeneralContext);
   const navigate = useNavigate();
 
   const handleNextButton = () => {
     navigate('/selectplan');
     setPlan(true);
     setYourInfo(false);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserInputs((prevState) => ({ ...prevState, [name]: value }));
   };
 
   return (
@@ -21,15 +26,15 @@ const YourInfo = () => {
         <div className='request'>Please provide your name, email address and phone number.</div>
         <div className='info-input-title'>
           <label className='info-title'>Name</label>
-          <input className='info-input' type='text' placeholder='e.g. Stephen King' />
+          <input name='name' value={userInputs.name} onChange={handleInputChange} className='info-input' type='text' placeholder='e.g. Stephen King' />
         </div>
         <div className='info-input-title'>
           <label className='info-title'>Email Address</label>
-          <input className='info-input' type='email' placeholder='e.g. stephenking@email.com' />
+          <input name='email' value={userInputs.email} onChange={handleInputChange} className='info-input' type='email' placeholder='e.g. stephenking@email.com' />
         </div>
         <div className='info-input-title'>
           <label className='info-title'>Phone Number</label>
-          <input className='info-input' type='number' placeholder='e.g. +1 123 456 7890' />
+          <input name='phone' value={userInputs.phone} onChange={handleInputChange} className='info-input' type='number' placeholder='e.g. +1 123 456 7890' />
         </div>
       </div>
 
