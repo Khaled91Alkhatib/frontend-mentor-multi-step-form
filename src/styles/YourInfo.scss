@@ -37,7 +37,7 @@
   border: 1px solid hsl(229, 24%, 87%);
   border-radius: 8px;
   padding-left: 15px;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   color: hsl(213, 100%, 27%);
   font-weight: 500;
   font-size: 14px;
@@ -64,4 +64,35 @@
     cursor: pointer;
     transform: scale(1.05);
   }
+}
+
+.error-style {
+  color: red;
+  font-weight: bold;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.name-hidden {
+  display: none;
+}
+
+.name-show {
+  display: inline;
+}
+
+.email-hidden {
+  display: none;
+}
+
+.email-show {
+  display: inline;
+}
+
+.phone-hidden {
+  display: none;
+}
+
+.phone-show {
+  display: inline;
 }
