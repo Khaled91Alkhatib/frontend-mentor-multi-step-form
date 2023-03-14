@@ -34,6 +34,7 @@ const AddOns = () => {
   const handleNextButton = () => {
     navigate('/summary');
     setUserInputs(prev => ({
+      ...prev,
       addOns: !prev.addOns,
       summary: !prev.summary
     }));
@@ -42,8 +43,9 @@ const AddOns = () => {
   const handleBackButton = () => {
     navigate(-1);
     setUserInputs(prev => ({
+      ...prev,
       plan: !prev.plan,
-      summary: !prev.summary
+      addOns: !prev.addOns
     }));
   };
 
