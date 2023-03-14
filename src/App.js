@@ -11,49 +11,32 @@ import YourInfo from './components/YourInfo';
 import './App.css';
 
 function App() {
-  const [yourInfo, setYourInfo] = useState(true);
-  const [plan, setPlan] = useState(false);
-  const [addOns, setAddOns] = useState(false);
-  const [summary, setSummary] = useState(false);
   const [monthly, setMonthly] = useState(true);
   const [yearly, setYearly] = useState(false);
 
   const [userInputs, setUserInputs] = useState({
+    yourInfo: true,
+    plan: false,
+    addOns: false,
+    summary: false,
     name: "",
     email: "",
     phone: ""
   });
 
-
   useEffect(() => {
-    const newInfo = localStorage.getItem('personal-info');
-    if (newInfo !== null) {
-      setYourInfo(JSON.parse(newInfo));
+    const savedState = localStorage.getItem('myState');
+    if (savedState) {
+      setUserInputs(JSON.parse(savedState));
     }
   }, []);
 
   useEffect(() => {
-    const newPlan = localStorage.getItem('plan');
-    if (newPlan !== null) {
-      setPlan(JSON.parse(newPlan));
-    }
-  }, []);
-
-  useEffect(() => {
-    const savedInputs = JSON.parse(localStorage.getItem("userInputs"));
-    if (savedInputs) {
-      setUserInputs(savedInputs);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('personal-info', JSON.stringify(yourInfo));
-    localStorage.setItem('plan', JSON.stringify(plan));
-    localStorage.setItem('userInputs', JSON.stringify(userInputs));
-  }, [yourInfo, plan, userInputs]);
+    localStorage.setItem('myState', JSON.stringify(userInputs));
+  }, [userInputs]);
 
   return (
-    <GeneralContext.Provider value={{ yourInfo, setYourInfo, plan, setPlan, addOns, setAddOns, summary, setSummary, yearly, setYearly, monthly, setMonthly, userInputs, setUserInputs }}>
+    <GeneralContext.Provider value={{ yearly, setYearly, monthly, setMonthly, userInputs, setUserInputs }}>
       <div className='overall-app'>
         <SideNav />
         <Routes>
