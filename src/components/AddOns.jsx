@@ -27,7 +27,7 @@ const addOns = [
 
 const AddOns = () => {
   const { userInputs, setUserInputs } = useContext(GeneralContext);
-  console.log(userInputs, "addons");
+  // console.log(userInputs, "addons");
 
   const navigate = useNavigate();
 

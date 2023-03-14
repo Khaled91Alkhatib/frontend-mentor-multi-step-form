@@ -6,7 +6,7 @@ import '../styles/YourInfo.scss';
 
 const YourInfo = () => {
   const { userInputs, setUserInputs } = useContext(GeneralContext);
-  console.log(userInputs, "yourinfo");
+  // console.log(userInputs, "yourinfo");
   const navigate = useNavigate();
   const [nameMsg, setNameMsg] = useState('error-style name-hidden');
   const [emailMsg, setEmailMsg] = useState('error-style email-hidden');
@@ -46,7 +46,6 @@ const YourInfo = () => {
     if (name === 'phone') {
       setPhoneMsg(`phone-hidden`);
     }
-
   };
 
   return (

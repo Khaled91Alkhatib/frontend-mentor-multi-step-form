@@ -32,7 +32,7 @@ const plans = [
 
 const SelectPlan = () => {
   const { setMonthly, setYearly, monthly, yearly, userInputs, setUserInputs } = useContext(GeneralContext);
-  console.log(userInputs, 'plan');
+  // console.log(userInputs, 'plan');
 
   const [selectedItemId, setSelectedItemId] = useState(null);
   const navigate = useNavigate();
