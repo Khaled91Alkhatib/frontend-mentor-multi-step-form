@@ -31,21 +31,26 @@ const plans = [
 ];
 
 const SelectPlan = () => {
-  const { setYourInfo, setPlan, setAddOns, setMonthly, setYearly, monthly, yearly } = useContext(GeneralContext);
+  const { setMonthly, setYearly, monthly, yearly, userInputs, setUserInputs } = useContext(GeneralContext);
+  console.log(userInputs.name, 'plan');
 
   const [selectedItemId, setSelectedItemId] = useState(null);
   const navigate = useNavigate();
 
   const handleNextButton = () => {
     navigate('/addons');
-    setPlan(false);
-    setAddOns(true);
+    setUserInputs(prev => ({
+      plan: !prev.plan,
+      addOns: !prev.addOns
+    }));
   };
 
   const handleBackButton = () => {
     navigate(-1);
-    setYourInfo(true);
-    setPlan(false);
+    setUserInputs(prev => ({
+      yourInfo: !prev.yourInfo,
+      plan: !prev.plan
+    }));
   };
 
   const handleItemClick = (itemId) => {
