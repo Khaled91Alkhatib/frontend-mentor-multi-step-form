@@ -26,20 +26,25 @@ const addOns = [
 ];
 
 const AddOns = () => {
-  const { setPlan, setSummary, setAddOns } = useContext(GeneralContext);
+  const { userInputs, setUserInputs } = useContext(GeneralContext);
+  console.log(userInputs, "addons");
 
   const navigate = useNavigate();
 
   const handleNextButton = () => {
     navigate('/summary');
-    setPlan(false);
-    setSummary(false);
+    setUserInputs(prev => ({
+      addOns: !prev.addOns,
+      summary: !prev.summary
+    }));
   };
 
   const handleBackButton = () => {
     navigate(-1);
-    setPlan(true);
-    setAddOns(false);
+    setUserInputs(prev => ({
+      plan: !prev.plan,
+      summary: !prev.summary
+    }));
   };
 
   return (
@@ -54,7 +59,7 @@ const AddOns = () => {
 
         <div>
           {addOns.map((addOn => (
-            <div className='main-addons'>
+            <div key={addOn.id} className='main-addons'>
 
 
               <div style={{ display: 'flex' }}>
