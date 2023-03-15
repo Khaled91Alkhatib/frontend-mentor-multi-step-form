@@ -31,7 +31,7 @@ const plans = [
 ];
 
 const SelectPlan = () => {
-  const { setMonthly, setYearly, monthly, yearly, userInputs, setUserInputs } = useContext(GeneralContext);
+  const { setMonthly, setYearly, monthly, yearly, setUserInputs } = useContext(GeneralContext);
   // console.log(userInputs, 'plan');
 
   const [selectedItemId, setSelectedItemId] = useState(null);
@@ -58,6 +58,7 @@ const SelectPlan = () => {
   const handleItemClick = (itemId) => {
     setSelectedItemId(itemId);
   };
+  console.log(selectedItemId)
 
   const handlePlanType = () => {
     if (monthly === true) {
