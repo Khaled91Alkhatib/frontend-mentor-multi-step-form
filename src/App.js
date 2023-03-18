@@ -21,7 +21,9 @@ function App() {
     summary: false,
     name: "",
     email: "",
-    phone: ""
+    phone: "",
+    planName: "",
+    planPrice: ""
   });
 
   useEffect(() => {
