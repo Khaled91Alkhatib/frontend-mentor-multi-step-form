@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   const [monthly, setMonthly] = useState(true);
   const [yearly, setYearly] = useState(false);
-
+  const [selectedPlan, setSelectedPlan] = useState({});
   const [userInputs, setUserInputs] = useState({
     yourInfo: true,
     plan: false,
@@ -22,8 +22,6 @@ function App() {
     name: "",
     email: "",
     phone: "",
-    planName: "",
-    planPrice: ""
   });
 
   useEffect(() => {
@@ -34,11 +32,36 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const savedState = localStorage.getItem('plan');
+    if (savedState) {
+      setSelectedPlan(JSON.parse(savedState));
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedState = localStorage.getItem('monthly');
+    if (savedState) {
+      setMonthly(JSON.parse(savedState));
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedState = localStorage.getItem('yearly');
+    if (savedState) {
+      setYearly(JSON.parse(savedState));
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem('myState', JSON.stringify(userInputs));
-  }, [userInputs]);
+    localStorage.setItem('plan', JSON.stringify(selectedPlan));
+    localStorage.setItem('monthly', JSON.stringify(monthly));
+    localStorage.setItem('yearly', JSON.stringify(yearly));
+
+  }, [userInputs, selectedPlan, monthly, yearly]);
 
   return (
-    <GeneralContext.Provider value={{ yearly, setYearly, monthly, setMonthly, userInputs, setUserInputs }}>
+    <GeneralContext.Provider value={{ yearly, setYearly, monthly, setMonthly, selectedPlan, setSelectedPlan, userInputs, setUserInputs }}>
       <div className='overall-app'>
         <SideNav />
         <Routes>
