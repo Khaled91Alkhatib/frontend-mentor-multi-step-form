@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GeneralContext from '../contexts/GeneralContext';
 
@@ -9,24 +9,28 @@ const addOns = [
     id: 1,
     title: 'Online service',
     description: 'Access to multiplayer games',
-    price: 1
+    price: 1,
+    isChecked: false
   },
   {
     id: 2,
     title: 'Larger storage',
-    description: 'Extra 1TB od cloud save',
-    price: 2
+    description: 'Extra 1TB of cloud save',
+    price: 2,
+    isChecked: false
   },
   {
     id: 3,
     title: 'Customizable profile',
     description: 'Custom theme on your profile',
-    price: 2
+    price: 2,
+    isChecked: false
   }
 ];
 
 const AddOns = () => {
-  const { setUserInputs } = useContext(GeneralContext);
+  const { setUserInputs, monthly } = useContext(GeneralContext);
+  const [allAddOns, setAllAddOns] = useState(addOns);
   // console.log(userInputs, "addons");
 
   const navigate = useNavigate();
@@ -49,6 +53,18 @@ const AddOns = () => {
     }));
   };
 
+  function handleCheckbox(itemId) {
+    const updatedItems = allAddOns.map(addOn => {
+      if (addOn.id === itemId) {
+        return { ...addOn, isChecked: !addOn.isChecked };
+      } else {
+        return addOn;
+      }
+    });
+    setAllAddOns(updatedItems);
+  }
+
+  console.log(allAddOns);
   return (
     <div className='every-main-page'>
 
@@ -60,19 +76,18 @@ const AddOns = () => {
         </div>
 
         <div>
-          {addOns.map((addOn => (
-            <div key={addOn.id} className='main-addons'>
+          {allAddOns.map((addOn => (
+            <div key={addOn.id} className={`main-addons ${addOn.isChecked ? 'selected-addon' : ''}`}>
 
-
-              <div style={{ display: 'flex' }}>
-                <input style={{ marginRight: '1.5em' }} type='checkbox' />
+              <div className='single-addons'>
+                <input checked={addOns.isChecked} style={{ marginRight: '1.5em' }} type='checkbox' onChange={() => handleCheckbox(addOn.id)} />
                 <div>
                   <div className='segment-name'>{addOn.title}</div>
                   <div className='segment-price'>{addOn.description}</div>
                 </div>
               </div>
 
-              <div className='addon-price'>{addOn.price}</div>
+              <div className='addon-price'>+${monthly ? addOn.price : addOn.price * 10}{monthly ? "/mo" : "/yr"}</div>
 
             </div>
           )))}
