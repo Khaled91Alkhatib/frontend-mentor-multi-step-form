@@ -8,21 +8,21 @@ const YourInfo = () => {
   const { userInputs, setUserInputs } = useContext(GeneralContext);
   // console.log(userInputs, "yourinfo");
   const navigate = useNavigate();
-  const [nameMsg, setNameMsg] = useState('error-style name-hidden');
-  const [emailMsg, setEmailMsg] = useState('error-style email-hidden');
-  const [phoneMsg, setPhoneMsg] = useState('error-style phone-hidden');
+  const [nameMsg, setNameMsg] = useState('info-error-style name-hidden');
+  const [emailMsg, setEmailMsg] = useState('info-error-style email-hidden');
+  const [phoneMsg, setPhoneMsg] = useState('info-error-style phone-hidden');
 
   const handleNextButton = (e) => {
     e.preventDefault();
 
     if (!userInputs.name.trim()) {
-      setNameMsg('error-style name-show');
+      setNameMsg('info-error-style name-show');
     }
     if (!userInputs.email.trim()) {
-      setEmailMsg('error-style email-show');
+      setEmailMsg('info-error-style email-show');
     }
     if (!userInputs.phone.trim()) {
-      setPhoneMsg('error-style phone-show');
+      setPhoneMsg('info-error-style phone-show');
     }
     if (userInputs.name.trim() && userInputs.email.trim() && userInputs.phone.trim()) {
       navigate('/selectplan');
