@@ -31,19 +31,22 @@ const plans = [
 ];
 
 const SelectPlan = () => {
-  const { setMonthly, setYearly, monthly, yearly, setUserInputs } = useContext(GeneralContext);
-  // console.log(userInputs, 'plan');
+  const { setMonthly, setYearly, monthly, selectedPlan, setSelectedPlan, yearly, setUserInputs } = useContext(GeneralContext);
+  const [emailMsg, setEmailMsg] = useState('plan-error-style plan-hidden');
 
-  const [selectedItemId, setSelectedItemId] = useState(null);
   const navigate = useNavigate();
 
   const handleNextButton = () => {
-    navigate('/addons');
-    setUserInputs(prev => ({
-      ...prev,
-      plan: !prev.plan,
-      addOns: !prev.addOns
-    }));
+    if (!selectedPlan.id) {
+      setEmailMsg('plan-error-style plan-shown');
+    } else {
+      navigate('/addons');
+      setUserInputs(prev => ({
+        ...prev,
+        plan: !prev.plan,
+        addOns: !prev.addOns
+      }));
+    }
   };
 
   const handleBackButton = () => {
@@ -55,18 +58,37 @@ const SelectPlan = () => {
     }));
   };
 
-  const handleItemClick = (itemId) => {
-    setSelectedItemId(itemId);
+  const handleItemClick = (selectedPlan) => {
+
+    if (monthly) {
+      const newSelectedPlan = {
+        id: selectedPlan.id,
+        name: selectedPlan.name,
+        price: selectedPlan.price,
+      };
+      setSelectedPlan(newSelectedPlan);
+      setEmailMsg('plan-error-style plan-hidden');
+    } else {
+      const newSelectedPlan = {
+        id: selectedPlan.id,
+        name: selectedPlan.name,
+        price: selectedPlan.price * 10,
+      };
+      setSelectedPlan(newSelectedPlan);
+      setEmailMsg('plan-error-style plan-hidden');
+    }
   };
-  console.log(selectedItemId)
+  console.log(selectedPlan);
 
   const handlePlanType = () => {
     if (monthly === true) {
       setMonthly(false);
       setYearly(true);
+      setSelectedPlan({});
     } else if (monthly === false) {
       setMonthly(true);
       setYearly(false);
+      setSelectedPlan({});
     }
   };
 
@@ -79,10 +101,9 @@ const SelectPlan = () => {
           <div className='personal'>Select your plan</div>
           <div className='request'>You have the option of monthly or yearly billing.</div>
         </div>
-
         <div className='plans'>
           {plans.map((plan) => (
-            <div key={plan.id} className={plan.id === selectedItemId ? 'individual-plan active-individual-plan' : 'individual-plan inactive-individual-plan'} onClick={() => handleItemClick(plan.id)}>
+            <div key={plan.id} className={plan.id === selectedPlan.id ? 'individual-plan active-individual-plan' : 'individual-plan inactive-individual-plan'} onClick={() => handleItemClick(plan)}>
               <div>
                 <img src={plan.image} alt='plan' />
               </div>
@@ -98,7 +119,9 @@ const SelectPlan = () => {
               </div>
             </div>
           ))}
+
         </div>
+        <div className={emailMsg}>Please choose a plan!</div>
         <div className='switch-toggle'>
           <div className={monthly === true ? "plan-type active-plan monthly" : "plan-type inactive-plan monthly"}>Monthly</div>
           <Toggle
