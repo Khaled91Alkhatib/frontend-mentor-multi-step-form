@@ -9,10 +9,23 @@
   min-width: 70vh
 }
 
+.selected-addon {
+  background-color: yellow;
+}
+
 .main-addons:not(:last-child) {
   margin-bottom: 1em;
 }
 
 .addon-price {
   color: blue;
+}
+
+.single-addons {
+  display: flex;
+}
+
+.selected-addon {
+  border: 1px solid blue;
+  background-color: hsl(253, 27%, 94%);
 }

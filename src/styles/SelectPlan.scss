@@ -103,3 +103,18 @@
     transform: scale(1.05);
   }
 }
+
+.plan-error-style {
+  color: red;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.plan-hidden {
+  display: none;
+}
+
+.plan-shown {
+  display: inline;
+}
