@@ -10,10 +10,36 @@ import YourInfo from './components/YourInfo';
 
 import './App.css';
 
+const addOns = [
+  {
+    id: 1,
+    title: 'Online service',
+    description: 'Access to multiplayer games',
+    price: 1,
+    isChecked: false
+  },
+  {
+    id: 2,
+    title: 'Larger storage',
+    description: 'Extra 1TB of cloud save',
+    price: 2,
+    isChecked: false
+  },
+  {
+    id: 3,
+    title: 'Customizable profile',
+    description: 'Custom theme on your profile',
+    price: 2,
+    isChecked: false
+  }
+];
+
+
 function App() {
   const [monthly, setMonthly] = useState(true);
   const [yearly, setYearly] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState({});
+  const [allAddOns, setAllAddOns] = useState(addOns);
   const [userInputs, setUserInputs] = useState({
     yourInfo: true,
     plan: false,
@@ -53,15 +79,23 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const savedState = localStorage.getItem('addOns');
+    if (savedState) {
+      setAllAddOns(JSON.parse(savedState));
+    }
+  }, []);
+
+
+  useEffect(() => {
     localStorage.setItem('myState', JSON.stringify(userInputs));
     localStorage.setItem('plan', JSON.stringify(selectedPlan));
     localStorage.setItem('monthly', JSON.stringify(monthly));
     localStorage.setItem('yearly', JSON.stringify(yearly));
-
-  }, [userInputs, selectedPlan, monthly, yearly]);
+    localStorage.setItem('addOns', JSON.stringify(allAddOns));
+  }, [userInputs, selectedPlan, monthly, yearly, allAddOns]);
 
   return (
-    <GeneralContext.Provider value={{ yearly, setYearly, monthly, setMonthly, selectedPlan, setSelectedPlan, userInputs, setUserInputs }}>
+    <GeneralContext.Provider value={{ yearly, setYearly, monthly, setMonthly, selectedPlan, setSelectedPlan, allAddOns, setAllAddOns, userInputs, setUserInputs }}>
       <div className='overall-app'>
         <SideNav />
         <Routes>
