@@ -1,36 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GeneralContext from '../contexts/GeneralContext';
 
 import '../styles/AddOns.scss';
 
-const addOns = [
-  {
-    id: 1,
-    title: 'Online service',
-    description: 'Access to multiplayer games',
-    price: 1,
-    isChecked: false
-  },
-  {
-    id: 2,
-    title: 'Larger storage',
-    description: 'Extra 1TB of cloud save',
-    price: 2,
-    isChecked: false
-  },
-  {
-    id: 3,
-    title: 'Customizable profile',
-    description: 'Custom theme on your profile',
-    price: 2,
-    isChecked: false
-  }
-];
-
 const AddOns = () => {
-  const { setUserInputs, monthly } = useContext(GeneralContext);
-  const [allAddOns, setAllAddOns] = useState(addOns);
+  const { setUserInputs, monthly, allAddOns, setAllAddOns } = useContext(GeneralContext);
   // console.log(userInputs, "addons");
 
   const navigate = useNavigate();
@@ -80,7 +55,7 @@ const AddOns = () => {
             <div key={addOn.id} className={`main-addons ${addOn.isChecked ? 'selected-addon' : ''}`}>
 
               <div className='single-addons'>
-                <input checked={addOns.isChecked} style={{ marginRight: '1.5em' }} type='checkbox' onChange={() => handleCheckbox(addOn.id)} />
+                <input checked={addOn.isChecked} style={{ marginRight: '1.5em' }} type='checkbox' onChange={() => handleCheckbox(addOn.id)} />
                 <div>
                   <div className='segment-name'>{addOn.title}</div>
                   <div className='segment-price'>{addOn.description}</div>
