@@ -50,7 +50,7 @@ const SelectPlan = () => {
   };
 
   const handleBackButton = () => {
-    navigate(-1);
+    navigate('/');
     setUserInputs(prev => ({
       ...prev,
       yourInfo: !prev.yourInfo,
