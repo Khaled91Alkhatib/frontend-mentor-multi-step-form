@@ -1,0 +1,37 @@
+.plan-addons {
+  width: 95%;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.plan-addon-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selected-plan,
+.selected-price {
+  color: hsl(213, 100%, 27%);
+  font-weight: 700;
+}
+
+.change-button {
+  margin-top: 2px;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  padding: 0;
+  text-decoration: underline;
+  color: #8B8B8B;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.vertical-line {
+  margin: 20px 0;
+  border-bottom: 1px solid #e1e1e1;
+}
