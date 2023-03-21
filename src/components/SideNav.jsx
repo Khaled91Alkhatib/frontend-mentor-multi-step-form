@@ -5,7 +5,7 @@ import '../styles/SideNav.scss';
 import desktopSidebar from '../assests/images/bg-sidebar-desktop.svg';
 
 const SideNav = () => {
-  const { userInputs, summary } = useContext(GeneralContext);
+  const { userInputs } = useContext(GeneralContext);
 
   return (
     <div className='all-steps'>
@@ -38,7 +38,7 @@ const SideNav = () => {
         </div>
 
         <div className='number-to-step'>
-          <div className={summary ? "active-number" : "number"}>4</div>
+          <div className={userInputs.summary ? "active-number" : "number"}>4</div>
           <div className='number-name'>
             <div className='step'>STEP 4</div>
             <div className='name'>SUMMARY</div>
