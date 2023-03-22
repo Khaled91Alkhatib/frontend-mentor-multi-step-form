@@ -1,6 +1,9 @@
 .plan-addons {
   width: 95%;
   margin: auto;
+}
+
+.inner-details {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -34,4 +37,34 @@
 .vertical-line {
   margin: 20px 0;
   border-bottom: 1px solid #e1e1e1;
+}
+
+.addons {
+  display: flex;
+  justify-content: space-between;
+  color: #8B8B8B;
+  font-size: 14px;
+}
+
+.selected-addon-price {
+  color: hsl(213, 100%, 27%);
+}
+
+.addons:not(:last-child) {
+  margin-bottom: 1.2em;
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #8B8B8B;
+  padding: 20px;
+  margin: auto;
+}
+
+.total-price-amount {
+  font-size: 19px;
+  color: hsl(243, 100%, 62%);
+  font-weight: 700;
 }
