@@ -9,6 +9,7 @@ import Summary from './components/Summary';
 import YourInfo from './components/YourInfo';
 
 import './App.css';
+import ThankYou from './components/ThankYou';
 
 const addOns = [
   {
@@ -103,6 +104,7 @@ function App() {
           <Route path='/selectplan' element={<SelectPlan />} />
           <Route path='/addons' element={<AddOns />} />
           <Route path='/summary' element={<Summary />} />
+          <Route path='/thankyou' element={<ThankYou />} />
         </Routes>
       </div>
     </GeneralContext.Provider>
