@@ -4,6 +4,9 @@
   font-family: 'Ubuntu', sans-serif;
   /* background-color: hsl(210, 45%, 92%); */
   letter-spacing: 1px;
+  max-width: 100vh;
+  max-height: 100vh;
+
 }
 
 .overall-app {
@@ -16,6 +19,8 @@
   position: absolute;
   border-radius: 8px;
   min-width: 70%;
+  max-width: 100vh;
+  max-height: 100vh;
 }
 
 /* This is used to remove the arrows from input tags with type="number" */
@@ -25,5 +30,15 @@
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  
+  .overall-app {
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    transform: translate(0,0);
   }
 }

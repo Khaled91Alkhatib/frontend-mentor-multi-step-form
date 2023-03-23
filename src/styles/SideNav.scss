@@ -54,3 +54,34 @@
     font-weight: 500;
   }
 }
+
+
+.mobile-sidebar {
+  display: none;
+}
+
+
+@media screen and (max-width: 769px) {
+
+  .desktop-sidebar {
+    display: none;
+  }
+
+  .mobile-sidebar {
+    display: inline;
+    min-width: 100%;
+  }
+
+  .number-to-step {
+    flex-direction: row;
+  }
+
+  .inside-image {
+    display: flex;
+  }
+
+  .number-name {
+    display: none;
+  }
+
+}
