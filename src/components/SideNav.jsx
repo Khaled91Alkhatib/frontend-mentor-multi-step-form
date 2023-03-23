@@ -3,13 +3,15 @@ import GeneralContext from '../contexts/GeneralContext';
 
 import '../styles/SideNav.scss';
 import desktopSidebar from '../assests/images/bg-sidebar-desktop.svg';
+import mobileSidebar from '../assests/images/bg-sidebar-mobile.svg';
 
 const SideNav = () => {
   const { userInputs } = useContext(GeneralContext);
 
   return (
     <div className='all-steps'>
-      <img src={desktopSidebar} alt='sidebar' />
+      <img className='desktop-sidebar' src={desktopSidebar} alt='sidebar' />
+      <img className='mobile-sidebar' src={mobileSidebar} alt='sidebar' />
 
       <div className='inside-image'>
 
