@@ -7,7 +7,7 @@ import "../styles/Summary.scss";
 const Summary = () => {
   const { selectedPlan, monthly, setUserInputs, allAddOns } = useContext(GeneralContext);
   // console.log(selectedPlan);
-  console.log(allAddOns);
+  // console.log(allAddOns);
 
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const Summary = () => {
   };
 
   const selectedItems = allAddOns.filter(addOn => addOn.isChecked);
-  console.log(selectedItems);
+  // console.log(selectedItems);
 
   const totalPrice = selectedItems.reduce((total, selectedItem) => {
     return total + (monthly ? selectedItem.price : selectedItem.price * 10);

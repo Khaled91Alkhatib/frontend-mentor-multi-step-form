@@ -39,7 +39,7 @@ const AddOns = () => {
     setAllAddOns(updatedItems);
   }
 
-  console.log(allAddOns);
+  // console.log(allAddOns);
   return (
     <div className='every-main-page'>
 
