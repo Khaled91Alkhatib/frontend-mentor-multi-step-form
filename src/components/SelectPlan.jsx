@@ -93,7 +93,7 @@ const SelectPlan = () => {
   };
 
   return (
-    <div className='every-main-page'>
+    <div className='every-main-page mobile-plan-page'>
 
       <div>
 
@@ -105,7 +105,7 @@ const SelectPlan = () => {
           {plans.map((plan) => (
             <div key={plan.id} className={plan.id === selectedPlan.id ? 'individual-plan active-individual-plan' : 'individual-plan inactive-individual-plan'} onClick={() => handleItemClick(plan)}>
               <div>
-                <img src={plan.image} alt='plan' />
+                <img className='margin-mobile' src={plan.image} alt='plan' />
               </div>
               <div>
                 <div className='segment-name'>{plan.name}</div>
