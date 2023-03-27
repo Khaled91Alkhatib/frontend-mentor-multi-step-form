@@ -118,3 +118,38 @@
 .plan-shown {
   display: inline;
 }
+
+@media screen and (max-width: 769px) {
+  .plans {
+    flex-direction: column;
+  }
+
+  .individual-plan {
+    height: 75px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+
+  .margin-mobile {
+    margin-right: 1em;
+  }
+
+  .back-next-buttons {
+    margin-top: 3em;
+  }
+
+  .switch-toggle {
+    margin-top: 0;
+  }
+
+  .mobile-plan-page {
+    background-color: white;
+    width: 90%;
+    height: 71%;
+    border-radius: 5px;
+  }
+
+}

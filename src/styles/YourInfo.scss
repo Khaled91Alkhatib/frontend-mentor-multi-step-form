@@ -97,3 +97,10 @@
 .phone-show {
   display: inline;
 }
+
+@media screen and (max-width: 769px) {
+  .every-main-page{
+    padding: 1em;
+  }
+  
+}

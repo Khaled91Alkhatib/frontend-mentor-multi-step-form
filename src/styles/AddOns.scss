@@ -29,3 +29,9 @@
   border: 1px solid blue;
   background-color: hsl(253, 27%, 94%);
 }
+
+@media screen and (max-width: 769px) {
+  .main-addons {
+    min-width: 100%;
+  }
+}
