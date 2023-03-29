@@ -2,3 +2,21 @@
   height: 80px;
   margin-bottom: 2em;
 }
+
+.main-page-button {
+  font-weight: 500;
+  font-size: 15px;
+  border: none;
+  background-color: rgb(19, 173, 19);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  width: 50%;
+  margin: auto;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+}
