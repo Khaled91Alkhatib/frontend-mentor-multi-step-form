@@ -78,7 +78,7 @@ const SelectPlan = () => {
       setEmailMsg('plan-error-style plan-hidden');
     }
   };
-  console.log(selectedPlan);
+  // console.log(selectedPlan);
 
   const handlePlanType = () => {
     if (monthly === true) {
